@@ -1,0 +1,83 @@
+﻿@model IEnumerable<CropsAppMVC.Models.Crop>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+@{
+    int? totalyield = 0;
+    double? totalExpenses = 0;
+    double? totalIncome = 0;
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Crop
+            </th>
+            <th>
+                Yield
+            </th>
+            <th>
+                Expenses
+            </th>
+            <th>
+                Income
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+@foreach (var item in Model) {
+            totalyield += item.CropYield;
+            totalExpenses += item.CropExpenses;
+            totalIncome += item.CropIncome;
+            <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CropName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CropYield)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CropExpenses)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CropIncome)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<br/>
+<div style="text-align: center">
+<div style="text-align:center; display:inline-block; width: 25%; background-color: #F1F1F1; padding: 10px; border-radius: 10px; margin-inline: 20px">
+    <h6>Total Yield</h6>
+    <br />
+    <h3>@totalyield</h3>
+</div>
+
+<div style="text-align:center; display:inline-block; width: 25%; background-color: #F1F1F1; padding: 10px; border-radius: 10px; margin-inline: 20px">
+    <h6>Total Expenses</h6>
+    <br />
+    <h3>@totalExpenses</h3>
+</div>
+
+<div style="text-align:center; display:inline-block; width: 25%; background-color: #F1F1F1; padding: 10px; border-radius: 10px; margin-inline: 20px">
+    <h6>Total Income</h6>
+    <br />
+    <h4>@totalIncome</h4>
+</div>
+</div>
+

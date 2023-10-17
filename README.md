@@ -18,9 +18,6 @@ All data is saved to the cloud in an online SQL database hosted on Azure.
 
 ## 💻Compilation
 Clone this repo in Visual Studio and invoke the .sln
-```
-https://github.com/MrMatrix2108/Cropometer.git
-```
 ## 🧰Advanced
 If the database is no longer hosted, you can create you own using the following SQL scripts.
 >You will also need to change the connection string in `appsettings.json` and `Models/CropDatabaseContext.cs` when using your own database. 
